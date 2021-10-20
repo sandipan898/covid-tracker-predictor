@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<meta id="historical_worldwide_dates" data-historical_worldwide_dates="{{ historical_worldwide_dates }}">
+<meta id="historical_worldwide_cases" data-historical_worldwide_cases="{{ historical_worldwide_cases }}">
+<meta id="historical_worldwide_recovered" data-historical_worldwide_recovered="{{ historical_worldwide_recovered }}">
+<meta id="historical_worldwide_dates" data-historical_worldwide_deaths="{{ historical_worldwide_deaths }}">
+
 <div>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
@@ -200,7 +205,8 @@
                                     </div>
 
                                     <div class="mx-5">
-                                        <h4 class="text-2xl font-semibold text-gray-700">{{all_data_worldwide.cases}}</h4>
+                                        <h4 class="text-2xl font-semibold text-gray-700">{{all_data_worldwide.cases}}
+                                        </h4>
                                         <div class="text-gray-500">Total Confirmed</div>
                                     </div>
                                 </div>
@@ -213,7 +219,8 @@
                                     </div>
 
                                     <div class="mx-5">
-                                        <h4 class="text-2xl font-semibold text-gray-700">{{all_data_worldwide.recovered}}</h4>
+                                        <h4 class="text-2xl font-semibold text-gray-700">
+                                            {{all_data_worldwide.recovered}}</h4>
                                         <div class="text-gray-500">Total Recovered</div>
                                     </div>
                                 </div>
@@ -225,7 +232,8 @@
                                         <i class="fas fa-exclamation-circle"></i>
                                     </div>
                                     <div class="mx-5">
-                                        <h4 class="text-2xl font-semibold text-gray-700">{{all_data_worldwide.deaths}}</h4>
+                                        <h4 class="text-2xl font-semibold text-gray-700">{{all_data_worldwide.deaths}}
+                                        </h4>
                                         <div class="text-gray-500">Total Death</div>
                                     </div>
                                 </div>
@@ -243,7 +251,8 @@
                                     </div>
 
                                     <div class="mx-5">
-                                        <h4 class="text-2xl font-semibold text-gray-700">{{all_data_worldwide.todayCases}}</h4>
+                                        <h4 class="text-2xl font-semibold text-gray-700">
+                                            {{all_data_worldwide.todayCases}}</h4>
                                         <div class="text-gray-500">Total Confirmed</div>
                                     </div>
                                 </div>
@@ -256,7 +265,8 @@
                                     </div>
 
                                     <div class="mx-5">
-                                        <h4 class="text-2xl font-semibold text-gray-700">{{all_data_worldwide.todayRecovered}}</h4>
+                                        <h4 class="text-2xl font-semibold text-gray-700">
+                                            {{all_data_worldwide.todayRecovered}}</h4>
                                         <div class="text-gray-500">Total Recovered</div>
                                     </div>
                                 </div>
@@ -268,7 +278,8 @@
                                         <i class="fas fa-exclamation-circle"></i>
                                     </div>
                                     <div class="mx-5">
-                                        <h4 class="text-2xl font-semibold text-gray-700">{{all_data_worldwide.todayDeaths}}</h4>
+                                        <h4 class="text-2xl font-semibold text-gray-700">
+                                            {{all_data_worldwide.todayDeaths}}</h4>
                                         <div class="text-gray-500">Total Death</div>
                                     </div>
                                 </div>
@@ -299,7 +310,8 @@
                                     </div>
 
                                     <div class="mx-5">
-                                        <h4 class="text-1xl font-bold text-gray-700">{{all_data_worldwide.critical}}</h4>
+                                        <h4 class="text-1xl font-bold text-gray-700">{{all_data_worldwide.critical}}
+                                        </h4>
                                         <div class="text-gray-500">Critical</div>
                                     </div>
                                 </div>
@@ -323,7 +335,8 @@
                                         <!-- <i class="fas fa-exclamation-circle"></i> -->
                                     </div>
                                     <div class="mx-5">
-                                        <h4 class="text-1xl font-bold text-gray-700">{{all_data_worldwide.population}}</h4>
+                                        <h4 class="text-1xl font-bold text-gray-700">{{all_data_worldwide.population}}
+                                        </h4>
                                         <div class="text-gray-500">Current Population</div>
                                     </div>
                                 </div>
@@ -335,7 +348,8 @@
                                         <!-- <i class="fas fa-exclamation-circle"></i> -->
                                     </div>
                                     <div class="mx-5">
-                                        <h4 class="text-1xl font-bold text-gray-700">{{all_data_worldwide.affectedCountries}}</h4>
+                                        <h4 class="text-1xl font-bold text-gray-700">
+                                            {{all_data_worldwide.affectedCountries}}</h4>
                                         <div class="text-gray-500">Affected Countries</div>
                                     </div>
                                 </div>
@@ -348,6 +362,7 @@
                         <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-gray-700 text-gray-100">
                             <canvas id="dataChart" width="" height="100"></canvas>
                         </div>
+                        <!-- <p>{{historical_worldwide.cases}}</p> -->
                     </div>
 
 
@@ -690,63 +705,58 @@
     </div>
 </div>
 <script>
-    console.log({{historical_worldwide.cases}});
+    const historical_worldwide_dates = $('#historical_worldwide_dates').data("historical_worldwide_dates");
+    const historical_worldwide_cases = $('#historical_worldwide_cases').data("historical_worldwide_cases");
+    const historical_worldwide_recovered = $('#historical_worldwide_recovered').data("historical_worldwide_recovered");
+    const historical_worldwide_deaths = $('#historical_worldwide_deaths').data("historical_worldwide_deaths");
+    const data_cases = {
+        label: 'Confirmed',
+        data: historical_worldwide_cases,
+        borderWidth: 3,
+        tension: 0.2,
+        fill: false,
+        borderColor: 'blue'
+    }
+    const data_recovered = {
+        label: 'Recovered',
+        data: historical_worldwide_recovered,
+        borderWidth: 3,
+        tension: 0.2,
+        fill: false,
+        borderColor: 'green'
+    }
+    const data_deaths = {
+        label: 'Death',
+        data: historical_worldwide_deaths,
+        borderWidth: 3,
+        tension: 0.2,
+        fill: false,
+        borderColor: 'red'
+    }
+
     var ctx = document.getElementById('dataChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: 'Confirmed',
-                data: [{{historical_worldwide.cases}}],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1,
-                tension: 0.2
-            },
-            {
-                label: 'Recovered',
-                data: [12, 19, 3, 5, 2, 3],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1,
-                tension: 0.2
-            },
-            {
-                label: 'Death',
-                data: [12, 19, 3, 5, 2, 3],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1,
-                tension: 0.2
-            }]
+            labels: historical_worldwide_dates,
+            datasets: [
+                data_cases,
+                data_recovered,
+                data_deaths
+            ]
         },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
+    options: {
+        scales: {
+            xAxes: [{
+                type: 'time',
+                distribution: 'linear',
+            }],
+            // y: {
+            //     beginAtZero: true
+            // }
         }
-    });
+    }
+});
 
     // var myChart = new Chart(ctx, config);
     // const config = {

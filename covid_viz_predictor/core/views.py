@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, render
 import requests
 import json
+import datetime
 # Create your views here.
 
 def dashboard_view(request):
@@ -18,14 +19,21 @@ def dashboard_view(request):
     try:
         # historical_worldwide = requests.get("https://corona.lmao.ninja/v2/historical/all")
         historical_worldwide = requests.get("https://disease.sh/v3/covid-19/historical/all?lastdays=all").json()
-        historical_worldwide = json.dumps(historical_worldwide)
-        print(historical_worldwide)
+        historical_worldwide_cases = historical_worldwide['cases']
+        historical_worldwide_dates = list(historical_worldwide_cases.keys())
+        historical_worldwide_cases = list(historical_worldwide_cases.values())
+        historical_worldwide_recovered = list(historical_worldwide['recovered'].values())
+        historical_worldwide_deaths = list(historical_worldwide['deaths'].values())
+        # print(historical_worldwide_dates.count(), historical_worldwide_cases.count())
     except Exception as e:
         print(e)
         historical_worldwide = {}
     
     context = {
         'all_data_worldwide': all_data_worldwide,
-        'historical_worldwide': historical_worldwide
+        'historical_worldwide_dates': historical_worldwide_dates,
+        'historical_worldwide_cases': historical_worldwide_cases,
+        'historical_worldwide_recovered': historical_worldwide_recovered,
+        'historical_worldwide_deaths': historical_worldwide_deaths,
     }
     return render(request, template_name='dashboard.html', context=context)
