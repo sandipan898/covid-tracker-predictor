@@ -27,7 +27,7 @@
             </div>
 
             <nav class="mt-10">
-                <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-100" href="/">
+                <a class="flex items-center mt-4 py-2 px-6 bg-gray-700 bg-opacity-25 text-gray-100" href="#global_data">
                     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -187,10 +187,11 @@
                 </div>
             </header>
             <main class="flex-1 overflow-x-hidden overflow-y-auto">
-                <div class="container mx-auto px-6 py-8">
-                    <h3 class="text-gray-700 text-3xl font-medium">Dashboard</h3>
+                <div class="container mx-auto px-6 py-8" id="global_data">
+                    <h3 class="text-gray-700 text-5xl font-medium text-center py-4">Covid-19 Dashboard</h3>
 
-                    <div class="mt-4">
+                    <div class="mt-5">
+                        <h3 class="text-3xl font-medium pb-4">Global Data</h3>
                         <div class="flex flex-wrap -mx-6">
                             <div class="w-full px-6 sm:w-1/2 xl:w-1/3">
                                 <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
@@ -199,7 +200,7 @@
                                     </div>
 
                                     <div class="mx-5">
-                                        <h4 class="text-2xl font-semibold text-gray-700">{{cases}}</h4>
+                                        <h4 class="text-2xl font-semibold text-gray-700">{{all_data_worldwide.cases}}</h4>
                                         <div class="text-gray-500">Total Confirmed</div>
                                     </div>
                                 </div>
@@ -212,7 +213,7 @@
                                     </div>
 
                                     <div class="mx-5">
-                                        <h4 class="text-2xl font-semibold text-gray-700">{{recovered}}</h4>
+                                        <h4 class="text-2xl font-semibold text-gray-700">{{all_data_worldwide.recovered}}</h4>
                                         <div class="text-gray-500">Total Recovered</div>
                                     </div>
                                 </div>
@@ -224,8 +225,118 @@
                                         <i class="fas fa-exclamation-circle"></i>
                                     </div>
                                     <div class="mx-5">
-                                        <h4 class="text-2xl font-semibold text-gray-700">{{deaths}}</h4>
+                                        <h4 class="text-2xl font-semibold text-gray-700">{{all_data_worldwide.deaths}}</h4>
                                         <div class="text-gray-500">Total Death</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <h3 class="text-3xl font-medium pb-4">Today Cases</h3>
+                        <div class="flex flex-wrap -mx-6">
+                            <div class="w-full px-6 sm:w-1/2 xl:w-1/3">
+                                <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+                                    <div class="p-3 rounded-full bg-indigo-600 bg-opacity-75">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+
+                                    <div class="mx-5">
+                                        <h4 class="text-2xl font-semibold text-gray-700">{{all_data_worldwide.todayCases}}</h4>
+                                        <div class="text-gray-500">Total Confirmed</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/3 sm:mt-0">
+                                <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+                                    <div class="p-3 rounded-full bg-green-500 bg-opacity-75">
+                                        <i class="fas fa-walking"></i>
+                                    </div>
+
+                                    <div class="mx-5">
+                                        <h4 class="text-2xl font-semibold text-gray-700">{{all_data_worldwide.todayRecovered}}</h4>
+                                        <div class="text-gray-500">Total Recovered</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/3 xl:mt-0">
+                                <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+                                    <div class="p-3 rounded-full bg-red-600 bg-opacity-75">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                    </div>
+                                    <div class="mx-5">
+                                        <h4 class="text-2xl font-semibold text-gray-700">{{all_data_worldwide.todayDeaths}}</h4>
+                                        <div class="text-gray-500">Total Death</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <!-- <h3 class="text-3xl font-medium pb-4">Today Cases</h3> -->
+                        <div class="flex flex-wrap -mx-6">
+                            <div class="w-full px-6 sm:w-1/2 xl:w-1/5">
+                                <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+                                    <div class="p-3 rounded-full bg-indigo-600 bg-opacity-75">
+                                        <!-- <i class="fas fa-check-circle"></i> -->
+                                    </div>
+
+                                    <div class="mx-5">
+                                        <h4 class="text-1xl font-bold text-gray-700">{{all_data_worldwide.active}}</h4>
+                                        <div class="text-gray-500">Active Today</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/5 sm:mt-0">
+                                <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+                                    <div class="p-3 rounded-full bg-green-500 bg-opacity-75">
+                                        <!-- <i class="fas fa-walking"></i> -->
+                                    </div>
+
+                                    <div class="mx-5">
+                                        <h4 class="text-1xl font-bold text-gray-700">{{all_data_worldwide.critical}}</h4>
+                                        <div class="text-gray-500">Critical</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/5 xl:mt-0">
+                                <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+                                    <div class="p-3 rounded-full bg-red-600 bg-opacity-75">
+                                        <!-- <i class="fas fa-exclamation-circle"></i> -->
+                                    </div>
+                                    <div class="mx-5">
+                                        <h4 class="text-1xl font-bold text-gray-700">{{all_data_worldwide.tests}}</h4>
+                                        <div class="text-gray-500">Tests</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/5 xl:mt-0">
+                                <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+                                    <div class="p-3 rounded-full bg-red-600 bg-opacity-75">
+                                        <!-- <i class="fas fa-exclamation-circle"></i> -->
+                                    </div>
+                                    <div class="mx-5">
+                                        <h4 class="text-1xl font-bold text-gray-700">{{all_data_worldwide.population}}</h4>
+                                        <div class="text-gray-500">Current Population</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/5 xl:mt-0">
+                                <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
+                                    <div class="p-3 rounded-full bg-red-600 bg-opacity-75">
+                                        <!-- <i class="fas fa-exclamation-circle"></i> -->
+                                    </div>
+                                    <div class="mx-5">
+                                        <h4 class="text-1xl font-bold text-gray-700">{{all_data_worldwide.affectedCountries}}</h4>
+                                        <div class="text-gray-500">Affected Countries</div>
                                     </div>
                                 </div>
                             </div>
@@ -579,22 +690,43 @@
     </div>
 </div>
 <script>
+    console.log({{historical_worldwide.cases}});
     var ctx = document.getElementById('dataChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                label: 'Confirmed',
+                data: [{{historical_worldwide.cases}}],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
                 ],
+                borderWidth: 1,
+                tension: 0.2
+            },
+            {
+                label: 'Recovered',
+                data: [12, 19, 3, 5, 2, 3],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1,
+                tension: 0.2
+            },
+            {
+                label: 'Death',
+                data: [12, 19, 3, 5, 2, 3],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',

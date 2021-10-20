@@ -4,14 +4,9 @@ import json
 # Create your views here.
 
 def dashboard_view(request):
-    # data = requests.get('https://corona.lmao.ninja/v2/all?yesterday')
-    data = requests.get("https://disease.sh/v3/covid-19/all")
-    # historical_worldwide = requests.get("https://corona.lmao.ninja/v2/historical/all")
-    historical_worldwide = requests.get("https://disease.sh/v3/covid-19/historical/all?lastdays=all")
-    # print(historical_worldwide.json())
-    print(data.json())
     try:
-        world_wide = data.json()
+        # data = requests.get('https://corona.lmao.ninja/v2/all?yesterday')
+        all_data_worldwide = requests.get("https://disease.sh/v3/covid-19/all").json()
     except Exception as e:
         print(e)
         world_wide = {
@@ -19,5 +14,18 @@ def dashboard_view(request):
             'recovered': 0,
             'deaths': 0
         }
-    # print(json.loads(world_wide))
-    return render(request, template_name='dashboard.html', context=world_wide)
+
+    try:
+        # historical_worldwide = requests.get("https://corona.lmao.ninja/v2/historical/all")
+        historical_worldwide = requests.get("https://disease.sh/v3/covid-19/historical/all?lastdays=all").json()
+        historical_worldwide = json.dumps(historical_worldwide)
+        print(historical_worldwide)
+    except Exception as e:
+        print(e)
+        historical_worldwide = {}
+    
+    context = {
+        'all_data_worldwide': all_data_worldwide,
+        'historical_worldwide': historical_worldwide
+    }
+    return render(request, template_name='dashboard.html', context=context)
