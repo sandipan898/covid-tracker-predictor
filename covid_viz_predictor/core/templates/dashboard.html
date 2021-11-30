@@ -4,7 +4,7 @@
 <meta id="historical_worldwide_dates" data-historical_worldwide_dates="{{ historical_worldwide_dates }}">
 <meta id="historical_worldwide_cases" data-historical_worldwide_cases="{{ historical_worldwide_cases }}">
 <meta id="historical_worldwide_recovered" data-historical_worldwide_recovered="{{ historical_worldwide_recovered }}">
-<meta id="historical_worldwide_dates" data-historical_worldwide_deaths="{{ historical_worldwide_deaths }}">
+<meta id="historical_worldwide_deaths" data-historical_worldwide_deaths="{{ historical_worldwide_deaths }}">
 
 <div>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -45,7 +45,7 @@
                 </a>
 
                 <a class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
-                    href="#data_charts">
+                    href="#dataChart">
                     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -57,7 +57,7 @@
                 </a>
 
                 <a class="flex items-center mt-4 py-2 px-6 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100"
-                    href="#data_tables">
+                    href="#data_table">
                     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -288,6 +288,7 @@
                         </div>
                     </div>
 
+                    <!-- Medium cards -->
                     <div class="mt-6">
                         <!-- <h3 class="text-3xl font-medium pb-4">Today Cases</h3> -->
                         <div class="flex flex-wrap -mx-6">
@@ -357,10 +358,11 @@
                             </div>
                         </div>
                     </div>
-
+                    
+                    <!-- Chart -->
                     <div class="flex flex-col mt-8">
                         <h3 class="text-3xl font-medium pb-4">Charts</h3>
-                        <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-gray-700 text-gray-100">
+                        <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-gray-300 text-gray-100">
                             <canvas id="dataChart" width="" height="100"></canvas>
                         </div>
                         <!-- <p>{{historical_worldwide.cases}}</p> -->
@@ -391,19 +393,17 @@
                                     </thead>
 
                                     <tbody class="bg-white">
-                                        {% with flag = {{data.flag}} %}
-                                        {% for data in countries_data %}    
-                                            {% if flag.update({{data.flag}}) %} {% endif %}
+                                        {% for data in countries_data %}
                                         <tr>
                                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                 <div class="flex items-center">
                                                     <div class="flex-shrink-0 h-10 w-10">
                                                         <img class="h-10 w-10 rounded-full"
-                                                            src="{{flag}}"
+                                                            src="{{data.countryInfo.flag}}"
                                                             alt="">
                                                     </div>
                                                     <div class="ml-4">
-                                                        <div class="text-sm leading-5 font-medium text-gray-900">{{data.country}}</div>
+                                                        <div class="text-sm text-center leading-5 font-medium text-gray-900">{{data.country}}</div>
                                                         <!-- <div class="text-sm leading-5 text-gray-500">{{data.cases}} -->
                                                         </div>
                                                     </div>
@@ -436,58 +436,74 @@
     </div>
 </div>
 <script>
+    const getDatesBetweenDates = (startDate, endDate) => {
+        let dates = []
+        //to avoid modifying the original date
+        const theDate = new Date(startDate)
+        while (theDate < endDate) {
+            dates = [...dates, new Date(theDate).toDateString()]
+            theDate.setDate(theDate.getDate() + 3)
+        }
+        return dates
+    }
     const historical_worldwide_dates = $('#historical_worldwide_dates').data("historical_worldwide_dates");
     const historical_worldwide_cases = $('#historical_worldwide_cases').data("historical_worldwide_cases");
     const historical_worldwide_recovered = $('#historical_worldwide_recovered').data("historical_worldwide_recovered");
     const historical_worldwide_deaths = $('#historical_worldwide_deaths').data("historical_worldwide_deaths");
+
     const data_cases = {
         label: 'Confirmed',
         data: historical_worldwide_cases,
-        borderWidth: 3,
-        tension: 0.2,
+        // borderWidth: 3,
+        tension: 0.1,
         fill: false,
         borderColor: 'blue'
     }
     const data_recovered = {
         label: 'Recovered',
         data: historical_worldwide_recovered,
-        borderWidth: 3,
-        tension: 0.2,
+        // borderWidth: 3,
+        tension: 0.1,
         fill: false,
         borderColor: 'green'
     }
     const data_deaths = {
         label: 'Death',
         data: historical_worldwide_deaths,
-        borderWidth: 3,
-        tension: 0.2,
+        // borderWidth: 3,
+        tension: 0.1,
         fill: false,
         borderColor: 'red'
     }
+    // console.log(getDatesBetweenDates('1/22/20', Date.now()),)
 
     var ctx = document.getElementById('dataChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: historical_worldwide_dates,
+            labels: getDatesBetweenDates('1/22/20', Date.now()),
             datasets: [
                 data_cases,
                 data_recovered,
                 data_deaths
             ]
         },
-    options: {
-        scales: {
-            xAxes: [{
-                type: 'time',
-                distribution: 'linear',
-            }],
-            // y: {
-            //     beginAtZero: true
-            // }
+        maintainAspectRatio: true, 
+        options: {
+            scales: {
+                xAxes: [{
+                    type: 'time',
+                    distribution: 'linear',
+                }],
+            },
         }
-    }
 });
+window.onload = function() {
+  var ctx = document.getElementById("canvas").getContext("2d");
+  window.myBar = new Chart(ctx).MyLine(barChartData, {
+    overrideRotation: 90
+  });
+}
 
     // var myChart = new Chart(ctx, config);
     // const config = {
