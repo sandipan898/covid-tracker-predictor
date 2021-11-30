@@ -29,7 +29,15 @@ def dashboard_view(request):
         print(e)
         historical_worldwide = {}
     
+    try:
+        countries= requests.get("https://disease.sh/v3/covid-19/countries").json()
+        print(countries[0])
+    except Exception as e:
+        print(e)
+        countries = {}
+    
     context = {
+        'countries_data': countries,
         'all_data_worldwide': all_data_worldwide,
         'historical_worldwide_dates': historical_worldwide_dates,
         'historical_worldwide_cases': historical_worldwide_cases,
