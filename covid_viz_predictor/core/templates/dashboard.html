@@ -192,48 +192,48 @@
                     </div> -->
                 </div>
             </header>
-            <mai    n class="flex-1 overflow-x-hidden overflow-y-auto">
+            <main class="flex-1 overflow-x-hidden overflow-y-auto">
                 <div class="container mx-auto px-6 py-8" id="global_data">
                     <h3 class="text-gray-700 text-5xl font-medium text-center py-4">Covid-19 Dashboard</h3>
 
                     <div class="mt-5">
                         <h3 class="text-3xl font-medium pb-4">Global Data</h3>
-                        <div class="flex flex-wrap -mx-6">
-                            <div class="w-full px-6 sm:w-1/2 xl:w-1/3">
+                        <div class="flex flex-wrap -mx-6 sm:w-1/2 xl:w-1/3">
+                            <div class="w-full px-6 ">
                                 <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
                                     <div class="p-3 rounded-full bg-indigo-600 bg-opacity-75">
                                         <i class="fas fa-check-circle"></i>
                                     </div>
 
                                     <div class="mx-5">
-                                        <h4 class="text-2xl font-semibold text-gray-700">{{all_data_worldwide.cases}}
+                                        <h4 id="worldTotalCases" class="text-2xl font-semibold text-gray-700">
                                         </h4>
                                         <div class="text-gray-500">Total Confirmed</div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/3 sm:mt-0">
+                            <div class="w-full mt-6 px-6">
                                 <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
                                     <div class="p-3 rounded-full bg-green-500 bg-opacity-75">
                                         <i class="fas fa-walking"></i>
                                     </div>
 
                                     <div class="mx-5">
-                                        <h4 class="text-2xl font-semibold text-gray-700">
-                                            {{all_data_worldwide.recovered}}</h4>
+                                        <h4 id="worldRecoveredCases" class="text-2xl font-semibold text-gray-700">
+                                            </h4>
                                         <div class="text-gray-500">Total Recovered</div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/3 xl:mt-0">
+                            <div class="w-full mt-6 px-6">
                                 <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
                                     <div class="p-3 rounded-full bg-red-600 bg-opacity-75">
                                         <i class="fas fa-exclamation-circle"></i>
                                     </div>
                                     <div class="mx-5">
-                                        <h4 class="text-2xl font-semibold text-gray-700">{{all_data_worldwide.deaths}}
+                                        <h4 id="worldDeathCases" class="text-2xl font-semibold text-gray-700">
                                         </h4>
                                         <div class="text-gray-500">Total Death</div>
                                     </div>
@@ -252,8 +252,7 @@
                                     </div>
 
                                     <div class="mx-5">
-                                        <h4 class="text-2xl font-semibold text-gray-700">
-                                            {{all_data_worldwide.todayCases}}</h4>
+                                        <h4 id= "worldTodayCases" class="text-2xl font-semibold text-gray-700"> </h4>
                                         <div class="text-gray-500">Total Confirmed</div>
                                     </div>
                                 </div>
@@ -266,8 +265,7 @@
                                     </div>
 
                                     <div class="mx-5">
-                                        <h4 class="text-2xl font-semibold text-gray-700">
-                                            {{all_data_worldwide.todayRecovered}}</h4>
+                                        <h4 id="worldTodayRecovered" class="text-2xl font-semibold text-gray-700"></h4>
                                         <div class="text-gray-500">Total Recovered</div>
                                     </div>
                                 </div>
@@ -279,8 +277,7 @@
                                         <i class="fas fa-exclamation-circle"></i>
                                     </div>
                                     <div class="mx-5">
-                                        <h4 class="text-2xl font-semibold text-gray-700">
-                                            {{all_data_worldwide.todayDeaths}}</h4>
+                                        <h4 id="worldTodayDeaths" class="text-2xl font-semibold text-gray-700"></h4>
                                         <div class="text-gray-500">Total Death</div>
                                     </div>
                                 </div>
@@ -299,7 +296,7 @@
                                     </div>
 
                                     <div class="mx-5">
-                                        <h4 class="text-1xl font-bold text-gray-700">{{all_data_worldwide.active}}</h4>
+                                        <h4 id="worldTodayActive" class="text-1xl font-bold text-gray-700"></h4>
                                         <div class="text-gray-500">Active Today</div>
                                     </div>
                                 </div>
@@ -312,8 +309,7 @@
                                     </div>
 
                                     <div class="mx-5">
-                                        <h4 class="text-1xl font-bold text-gray-700">{{all_data_worldwide.critical}}
-                                        </h4>
+                                        <h4 id="worldTodayCritical" class="text-1xl font-bold text-gray-700"></h4>
                                         <div class="text-gray-500">Critical</div>
                                     </div>
                                 </div>
@@ -325,7 +321,7 @@
                                         <!-- <i class="fas fa-exclamation-circle"></i> -->
                                     </div>
                                     <div class="mx-5">
-                                        <h4 class="text-1xl font-bold text-gray-700">{{all_data_worldwide.tests}}</h4>
+                                        <h4 id="worldTodayTests" class="text-1xl font-bold text-gray-700"></h4>
                                         <div class="text-gray-500">Tests</div>
                                     </div>
                                 </div>
@@ -337,8 +333,7 @@
                                         <!-- <i class="fas fa-exclamation-circle"></i> -->
                                     </div>
                                     <div class="mx-5">
-                                        <h4 class="text-1xl font-bold text-gray-700">{{all_data_worldwide.population}}
-                                        </h4>
+                                        <h4 id="population" class="text-1xl font-bold text-gray-700"></h4>
                                         <div class="text-gray-500">Current Population</div>
                                     </div>
                                 </div>
@@ -350,62 +345,59 @@
                                         <!-- <i class="fas fa-exclamation-circle"></i> -->
                                     </div>
                                     <div class="mx-5">
-                                        <h4 class="text-1xl font-bold text-gray-700">
-                                            {{all_data_worldwide.affectedCountries}}</h4>
+                                        <h4 id="affectedCountries" class="text-1xl font-bold text-gray-700"></h4>
                                         <div class="text-gray-500">Affected Countries</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Chart -->
-                    <div class="flex flex-col mt-8">
+                    <div class="flex flex-col rounded mt-8 p-4">
                         <h3 class="text-3xl font-medium pb-4">Charts</h3>
-                        <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-gray-300 text-gray-100">
+                        <div class="flex items-center px-5 py-6 border-solid border-2 border-gray-400 shadow-lg rounded-md bg-white-300 text-gray-100">
                             <canvas id="dataChart" width="" height="100"></canvas>
                         </div>
                         <!-- <p>{{historical_worldwide.cases}}</p> -->
                     </div>
 
-
                     <div class="flex flex-col mt-8">
+                        <h3 class="text-3xl font-medium pb-4">Data Table</h3>
                         <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                             <div class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
-                                <table class="min-w-full rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800"
+                                <table class="table-auto min-w-full rounded-t-lg m-5 w-5/6 mx-auto bg-white text-gray-800"
                                     id="data_table">
                                     <thead>
                                         <tr>
                                             <th
-                                                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                                class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                                 Country</th>
                                             <th
-                                                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                                class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                                 Total Confirmed</th>
                                             <th
-                                                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                                class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                                 Total Recovered</th>
                                             <th
-                                                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                                class="px-6 py-3 border-b border-gray-200 bg-white text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                                 Total Death</th>
-                                            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
                                         </tr>
                                     </thead>
 
-                                    <tbody class="bg-white">
+                                    <tbody class="">
                                         {% for data in countries_data %}
                                         <tr>
                                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                 <div class="flex items-center">
                                                     <div class="flex-shrink-0 h-10 w-10">
                                                         <img class="h-10 w-10 rounded-full"
-                                                            src="{{data.countryInfo.flag}}"
-                                                            alt="">
+                                                            src="{{data.countryInfo.flag}}" alt="">
                                                     </div>
                                                     <div class="ml-4">
-                                                        <div class="text-sm text-center leading-5 font-medium text-gray-900">{{data.country}}</div>
-                                                        <!-- <div class="text-sm leading-5 text-gray-500">{{data.cases}} -->
-                                                        </div>
+                                                        <div
+                                                            class="text-sm text-center leading-5 font-medium text-gray-900">
+                                                            {{data.country}}</div>
                                                     </div>
                                                 </div>
                                             </td>
@@ -417,12 +409,14 @@
 
                                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                 <!-- <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">{Active}</span> -->
-                                                <span 
+                                                <span
                                                     class="px-6 py-4 whitespace-no-wrap border-b text-green-800">{{data.recovered}}</span>
                                             </td>
 
                                             <td
-                                                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">{{data.deaths}}</td>
+                                                class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
+                                                {{data.deaths}}
+                                            </td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
@@ -475,7 +469,6 @@
         fill: false,
         borderColor: 'red'
     }
-    // console.log(getDatesBetweenDates('1/22/20', Date.now()),)
 
     var ctx = document.getElementById('dataChart').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -488,7 +481,7 @@
                 data_deaths
             ]
         },
-        maintainAspectRatio: true, 
+        maintainAspectRatio: true,
         options: {
             scales: {
                 xAxes: [{
@@ -497,88 +490,33 @@
                 }],
             },
         }
-});
-window.onload = function() {
-  var ctx = document.getElementById("canvas").getContext("2d");
-  window.myBar = new Chart(ctx).MyLine(barChartData, {
-    overrideRotation: 90
-  });
-}
+    });
+    window.onload = function () {
+        var ctx = document.getElementById("canvas").getContext("2d");
+        window.myBar = new Chart(ctx).MyLine(barChartData, {
+            overrideRotation: 90
+        });
+    } 
 
-    // var myChart = new Chart(ctx, config);
-    // const config = {
-    //     type: 'line',
-    //     data: {
-    //         datasets: [{
-    //             borderColor: Utils.CHART_COLORS.red,
-    //             borderWidth: 1,
-    //             radius: 0,
-    //             data: data,
-    //         },
-    //         {
-    //             borderColor: Utils.CHART_COLORS.blue,
-    //             borderWidth: 1,
-    //             radius: 0,
-    //             data: data2,
-    //         }]
-    //     },
-    //     options: {
-    //         animation,
-    //         interaction: {
-    //             intersect: false
-    //         },
-    //         plugins: {
-    //             legend: false
-    //         },
-    //         scales: {
-    //             x: {
-    //                 type: 'linear'
-    //             }
-    //         }
-    //     }
-    // };
-
-    // const totalDuration = 10000;
-    // const delayBetweenPoints = totalDuration / data.length;
-    // const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
-    // const animation = {
-    //     x: {
-    //         type: 'number',
-    //         easing: 'linear',
-    //         duration: delayBetweenPoints,
-    //         from: NaN, // the point is initially skipped
-    //         delay(ctx) {
-    //             if (ctx.type !== 'data' || ctx.xStarted) {
-    //                 return 0;
-    //             }
-    //             ctx.xStarted = true;
-    //             return ctx.index * delayBetweenPoints;
-    //         }
-    //     },
-    //     y: {
-    //         type: 'number',
-    //         easing: 'linear',
-    //         duration: delayBetweenPoints,
-    //         from: previousY,
-    //         delay(ctx) {
-    //             if (ctx.type !== 'data' || ctx.yStarted) {
-    //                 return 0;
-    //             }
-    //             ctx.yStarted = true;
-    //             return ctx.index * delayBetweenPoints;
-    //         }
-    //     }
-    // };
-
-    // const data = [];
-    // const data2 = [];
-    // let prev = 100;
-    // let prev2 = 80;
-    // for (let i = 0; i < 1000; i++) {
-    //     prev += 5 - Math.random() * 10;
-    //     data.push({ x: i, y: prev });
-    //     prev2 += 5 - Math.random() * 10;
-    //     data2.push({ x: i, y: prev2 });
-    // }x`          
+    const url = 'https://disease.sh/v3/covid-19/all';
+    fetch(url, {
+        method: "GET"
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("DATA: ", data);
+        document.getElementById('worldTotalCases').innerText = data.cases;
+        document.getElementById('worldRecoveredCases').innerText = data.recovered;
+        document.getElementById('worldDeathCases').innerText = data.deaths;
+        document.getElementById('worldTodayCases').innerText = data.todayCases;
+        document.getElementById('worldTodayRecovered').innerText = data.todayRecovered;
+        document.getElementById('worldTodayDeaths').innerText = data.todayDeaths;
+        document.getElementById('worldTodayActive').innerText = data.active;
+        document.getElementById('worldTodayCritical').innerText = data.critical;
+        document.getElementById('worldTodayTests').innerText = data.tests;
+        document.getElementById('population').innerText = data.population;
+        document.getElementById('affectedCountries').innerText = data.affectedCountries;
+    })
+    .catch(err => alert(err));
 </script>
 {% endblock %}

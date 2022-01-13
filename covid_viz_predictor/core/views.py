@@ -6,17 +6,6 @@ import datetime
 
 def dashboard_view(request):
     try:
-        # data = requests.get('https://corona.lmao.ninja/v2/all?yesterday')
-        all_data_worldwide = requests.get("https://disease.sh/v3/covid-19/all").json()
-    except Exception as e:
-        print(e)
-        world_wide = {
-            'cases': 0, 
-            'recovered': 0,
-            'deaths': 0
-        }
-
-    try:
         # historical_worldwide = requests.get("https://corona.lmao.ninja/v2/historical/all")
         historical_worldwide = requests.get("https://disease.sh/v3/covid-19/historical/all?lastdays=all").json()
         historical_worldwide_cases = historical_worldwide['cases']
@@ -32,7 +21,6 @@ def dashboard_view(request):
     try:
         countries= requests.get("https://disease.sh/v3/covid-19/countries").json()
         # flag_list = [country['countryInfo']['flag'] for country in countries]
-        print(countries[0])
     except Exception as e:
         print(e)
         countries = {}
@@ -41,7 +29,6 @@ def dashboard_view(request):
     context = {
         'countries_data': countries,
         # 'flag_list': flag_list,
-        'all_data_worldwide': all_data_worldwide,
         'historical_worldwide_dates': historical_worldwide_dates,
         'historical_worldwide_cases': historical_worldwide_cases,
         'historical_worldwide_recovered': historical_worldwide_recovered,
